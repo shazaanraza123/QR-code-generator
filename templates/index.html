@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="icon" type="image/png" href="favicon.png"> <!-- Make sure to add a favicon.png in your static folder -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Welcome to Our QR Code Generator</h1>
+            <h2>Insert a link below to generate a QR code</h2>
+        </div>
+        <form action="/" method="POST">
+            <input type="text" name="link" placeholder="Enter URL here...">
+            <button type="submit">Generate QR</button>
+        </form>
+        <div class="generated">
+            {% if data %}
+                <img src="{{ data }}" alt="Generated QR Code" />
+                <p>Here is your QR code</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 1rem;
+    font-family: "Poppins", sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    margin-top: 2rem;
+}
+
+form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form input, form button {
+    padding: 0.8rem;
+    width: 100%;
+    border-radius: 5px;
+}
+
+form input {
+    border: 2px solid #ccc;
+    font-size: 1.1rem;
+}
+
+form button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #004494;
+}
+
+.generated img {
+    margin-top: 2rem;
+    max-width: 100%;
+}
+
+.generated p {
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    form {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    form input, form button {
+        width: auto;
+    }
+
+    form input {
+        flex-grow: 1;
+    }
+
+    form button {
+        min-width: 150px;
+    }
+}
+</style>
